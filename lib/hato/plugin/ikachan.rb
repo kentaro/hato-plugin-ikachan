@@ -35,7 +35,7 @@ module Hato
         res.value
       end
 
-      def send_requiest(url, params)
+      def send_request(url, params)
         http = Net::HTTP.new(URI(url).host, URI(url).port)
         req  = Net::HTTP::Post.new(URI(url).path)
         req.form_data = params
