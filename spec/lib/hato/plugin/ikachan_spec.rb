@@ -89,28 +89,6 @@ describe Hato::Plugin::Ikachan do
           }.to raise_error(Timeout::Error)
         }
       end
-
-      context 'http error' do
-        subject {
-          described_class.new(
-            Hato::Config::Plugin.new('Ikachan') {
-              scheme  'example.com'
-              channel 'text'
-            }
-          )
-        }
-        before {
-          allow(subject).to receive(:send_request).and_return(
-            Net::HTTPServerError.new('1.1', '500', 'forbidden')
-          )
-        }
-
-        it {
-          expect {
-            subject.notify(tag: 'test', message: 'test')
-          }.to raise_error(Net::HTTPFatalError)
-        }
-      end
     end
   end
 end

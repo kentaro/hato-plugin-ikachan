@@ -31,8 +31,7 @@ module Hato
           'message' => message,
         }
 
-        res = send_request(url, params)
-        res.value
+        send_request(url, params)
       end
 
       def send_request(url, params)
