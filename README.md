@@ -17,7 +17,18 @@ Hato::Config.define do
       scheme  'http'
       host    'irc.example.com'
       port    4979
-      channel %w[hato pigeon],
+      channel %w[hato pigeon]
+    end
+  end
+
+  # with message template
+  tag 'test2' do
+    plugin 'Ikachan' do
+      scheme   'http'
+      host     'irc.example.com'
+      port     4979
+      channel  %w[hato pigeon]
+      template 'Message from Hato: <%= args[:message] %>'
     end
   end
 

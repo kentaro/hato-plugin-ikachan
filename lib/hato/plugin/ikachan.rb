@@ -1,6 +1,7 @@
 require 'hato/plugin'
 require 'hato/plugin/ikachan/version'
 
+require 'erb'
 require 'uri'
 require 'net/http'
 
@@ -13,13 +14,20 @@ module Hato
 
         channel.each do |c|
           send_message(:join, c)
-          send_message(:notice, c, args[:message])
+          send_message(:notice, c, args)
         end
       end
 
       protected
 
-      def send_message(action, channel, message='')
+      def send_message(action, channel, args = {})
+        message = args[:message]
+
+        if config.template
+          erb = ERB.new(config.template)
+          message = erb.result(binding).chomp
+        end
+
         url = '%s://%s:%s/%s' % [
           config.scheme || 'http',
           config.host,

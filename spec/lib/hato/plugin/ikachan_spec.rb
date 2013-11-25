@@ -9,7 +9,7 @@ describe Hato::Plugin::Ikachan do
           subject {
             described_class.new(
               Hato::Config::Plugin.new('Ikachan') {
-                scheme  'example.com'
+                host    'example.com'
                 channel 'test'
               }
             )
@@ -28,7 +28,7 @@ describe Hato::Plugin::Ikachan do
           subject {
             described_class.new(
               Hato::Config::Plugin.new('Ikachan') {
-                scheme  'example.com'
+                host    'example.com'
                 channel %w[test1 test2]
               }
             )
@@ -49,7 +49,7 @@ describe Hato::Plugin::Ikachan do
       subject {
         described_class.new(
           Hato::Config::Plugin.new('Ikachan') {
-            scheme  'example.com'
+            host    'example.com'
             channel 'test'
           }
         )
@@ -72,7 +72,7 @@ describe Hato::Plugin::Ikachan do
         subject {
           described_class.new(
             Hato::Config::Plugin.new('Ikachan') {
-              scheme  'example.com'
+              hos  t  'example.com'
               channel 'test'
             }
           )
