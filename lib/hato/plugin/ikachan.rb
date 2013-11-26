@@ -23,9 +23,9 @@ module Hato
       def send_message(action, channel, args = {})
         message = args[:message]
 
-        if config.template
+        if action != :join && config.template
           erb = ERB.new(config.template)
-          message = erb.result(binding).chomp
+          message = erb.result(binding).strip.gsub(/[\r\n]+/)
         end
 
         url = '%s://%s:%s/%s' % [
