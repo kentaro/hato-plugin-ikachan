@@ -25,7 +25,7 @@ module Hato
 
         if action != :join && config.template
           erb = ERB.new(config.template)
-          message = erb.result(binding).strip.gsub(/[\r\n]+/)
+          message = erb.result(binding).strip.gsub(/[\r\n]+/, ' ')
         end
 
         url = '%s://%s:%s/%s' % [
